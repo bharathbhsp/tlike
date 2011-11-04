@@ -1,0 +1,15 @@
+<script type="text/javascript" src="/static/js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+	$.ajax({
+       type: "GET",
+       url: "[% c.uri_for("/followers/my/1") %]",
+       dataType: "json",
+       cache: false,
+       success: function(json){
+       		alert(json);
+       }
+    });	
+});
+</script>
+<div id="followers"></div>
