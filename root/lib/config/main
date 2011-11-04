@@ -12,8 +12,8 @@
 
    # define a data structure to hold sitewide data
    site = {
-     title     => 'Catalyst::View::TTSite Example Page',
-     copyright => '2011 Your Name Here',
+     title     => 'Twitter',
+     copyright => '2011 For Friends',
    };
 
    # load up any other configuration items

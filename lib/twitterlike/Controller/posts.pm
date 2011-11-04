@@ -23,9 +23,17 @@ Catalyst Controller.
 
 sub index :Path :Args(1) {
     my ( $self, $c, $username ) = @_;
-	my $posts = [$c->model->('DB')->resultset->('Post')->search({})];
-	$c->stash->{posts} = $posts;
     
+    my $userinfo = $c->model('DB')->resultset('User')->find({
+    	name => $username,	
+	});
+	
+	my $posts = [$c->model('DB')->resultset('Post')->search({
+		user_id => $userinfo->id,	
+	})];
+	$c->stash->{posts} = $posts;
+	$c->stash->{userinfo} = $userinfo;
+	
 }
 
 sub add :Local :Args(0) {
