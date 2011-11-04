@@ -39,7 +39,15 @@ sub index :Path :Args(1) {
 sub add :Local :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->response->body('Matched twitterlike::Controller::posts  add action in posts.');
+    my $userinfo = $c->model('DB')->resultset('User')->find({
+    	id => $c->request->parameters->{userid},	
+	});
+	my $post = $c->model('DB')->resultset('Post');
+	$post->create({
+		post => $c->request->parameters->{post},
+		user_id => $userinfo->id,
+	});
+    $c->res->redirect('/posts/'.$userinfo->name);
 }
 
 
