@@ -1,6 +1,7 @@
 package twitterlike::Controller::followers;
 use Moose;
 use namespace::autoclean;
+use Data::Dumper;
 
 BEGIN {extends 'Catalyst::Controller'; }
 
@@ -30,10 +31,18 @@ sub index :Path :Args(0) {
 sub my :Local :Args(1) {
     my ( $self, $c , $args) = @_;
 
-	
+	my @f = $c->model('DB')->resultset('Follower')->search({
+		user_id => $args,	
+	}, {select => 'follower_id'}
+	);
     
-    $c->stash->{json} = "test";
-     $c->detach( $c->view("JSON") );
+    my @names;
+    foreach(@f) {
+    	push @names, $_->follower->name;
+    }
+    
+    $c->stash->{json} = join(",", @names);
+    $c->detach( $c->view("JSON") );
 }
 
 
