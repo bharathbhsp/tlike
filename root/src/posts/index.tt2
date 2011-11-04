@@ -1,3 +1,24 @@
+<style>
+#followers {
+	float:right;
+	width: 100px;
+	padding: 8px 14px 12px 14px;
+	background: #F8F8F8;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	text-shadow: 0 1px 0 white;
+	margin: 6px 0 1em;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1)
+}
+</style>
+<div id="followers">
+	<strong>My followers</strong><br/>
+	<span id="fnames"></span>
+</div>
+
+
 <div style="width:800px;align:center;">
 <b>Hello, [% userinfo.name %] </b>
 <p style="border-bottom: 1px dotted #000000; width:450px;"></p>
@@ -21,19 +42,19 @@
 
 </div>
 
-<script type="text/javascript" src="/static/js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function() {
 	$.ajax({
        type: "GET",
-       url: "[% c.uri_for("/followers/my/1") %]",
+       url: "[% c.uri_for("/followers/my/" _ userinfo.id) %]",
        dataType: "json",
        cache: false,
-       success: function(json){
-       		alert(json);
+       success: function(data){
+       		$("#fnames").html(data.json);
        }
     });	
 });
 </script>
-<div id="followers"></div>
+
 
