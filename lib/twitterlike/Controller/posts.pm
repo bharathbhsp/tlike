@@ -27,6 +27,12 @@ sub index :Path :Args(0) {
     $c->response->body('Matched twitterlike::Controller::posts in posts.');
 }
 
+sub add :Local :Args(0) {
+    my ( $self, $c ) = @_;
+
+    $c->response->body('Matched twitterlike::Controller::posts  add action in posts.');
+}
+
 
 =head1 AUTHOR
 
