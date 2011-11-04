@@ -21,10 +21,11 @@ Catalyst Controller.
 
 =cut
 
-sub index :Path :Args(0) {
-    my ( $self, $c ) = @_;
-
-    $c->response->body('Matched twitterlike::Controller::posts in posts.');
+sub index :Path :Args(1) {
+    my ( $self, $c, $username ) = @_;
+	my $posts = [$c->model->('DB')->resultset->('Post')->search({})];
+	$c->stash->{posts} = $posts;
+    
 }
 
 sub add :Local :Args(0) {
