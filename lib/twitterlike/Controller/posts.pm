@@ -30,7 +30,7 @@ sub index :Path :Args(0) {
 sub add :Local :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->response->body('Matched twitterlike::Controller::posts  add action in posts.dasdas');
+    $c->response->body('Matched twitterlike::Controller::posts  add action in posts.');
 }
 
 
