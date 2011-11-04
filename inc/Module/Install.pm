@@ -31,7 +31,11 @@ BEGIN {
 	# This is not enforced yet, but will be some time in the next few
 	# releases once we can make sure it won't clash with custom
 	# Module::Install extensions.
+<<<<<<< HEAD
+	$VERSION = '1.04';
+=======
 	$VERSION = '1.00';
+>>>>>>> 88484ad0d3e6e7bede9e60c29e3dceeddb7f664f
 
 	# Storage for the pseudo-singleton
 	$MAIN    = undef;
@@ -451,7 +455,11 @@ sub _version ($) {
 }
 
 sub _cmp ($$) {
+<<<<<<< HEAD
+	_version($_[1]) <=> _version($_[2]);
+=======
 	_version($_[0]) <=> _version($_[1]);
+>>>>>>> 88484ad0d3e6e7bede9e60c29e3dceeddb7f664f
 }
 
 # Cloned from Params::Util::_CLASS
@@ -467,4 +475,8 @@ sub _CLASS ($) {
 
 1;
 
+<<<<<<< HEAD
+# Copyright 2008 - 2011 Adam Kennedy.
+=======
 # Copyright 2008 - 2010 Adam Kennedy.
+>>>>>>> 88484ad0d3e6e7bede9e60c29e3dceeddb7f664f
